@@ -1,8 +1,75 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome to Graphene Trace";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1>Graphene Trace</h1>
+        <p class="lead">
+            Pressure ulcer prevention through smart, real-time seating pressure monitoring.
+        </p>
+        <p>
+            Graphene-based sensor pads continuously measure seating pressure and convert it
+            into intuitive heatmaps, alerts and trends so users and clinicians can react
+            before damage occurs.
+        </p>
+
+        <a class="btn btn-primary btn-lg mt-3"
+           asp-area="Identity"
+           asp-page="/Account/Login">
+            Login / Register
+        </a>
+    </div>
+
+    <hr />
+
+    <div class="row text-center mt-4">
+        <div class="col-md-4 mb-3">
+            <h3>Patients</h3>
+            <p>
+                See your live pressure heatmap, notifications and key metrics such as
+                peak pressure index and contact area %. Understand how your posture
+                affects risk.
+            </p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <h3>Clinicians</h3>
+            <p>
+                Review patient pressure history, identify high-risk periods and record
+                clinical notes to support decision making. (Planned feature.)
+            </p>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <h3>Administrators</h3>
+            <p>
+                Manage users, devices and system configuration for deployments of
+                Graphene Trace. (Planned feature.)
+            </p>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h4>How Graphene Trace helps</h4>
+            <ul>
+                <li>Highlights high-pressure areas before skin damage occurs.</li>
+                <li>Helps patients adjust their sitting position in real time.</li>
+                <li>Supports communication between patients and clinicians using alerts and comments.</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h4>What a Patient will see after login</h4>
+            <ul>
+                <li>Current live pressure heatmap.</li>
+                <li>Notifications &amp; alerts for risky pressure levels.</li>
+                <li>Key metrics (peak pressure index, contact area %).</li>
+                <li>Graphs of historical pressure data.</li>
+                <li>Comment area to record how they felt at specific times.</li>
+            </ul>
+        </div>
+    </div>
 </div>
