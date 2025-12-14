@@ -1,14 +1,29 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using GrapheneTraceApplication.Models;
 
 namespace GrapheneTraceApplication.Controllers
 {
-    [Authorize]                     // must be logged in
+    [Authorize]
     public class ClinicianController : Controller
     {
-        public IActionResult Index()
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ClinicianController(UserManager<ApplicationUser> userManager)
         {
-            // later we’ll load clinician-specific data here
+            _userManager = userManager;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null || user.UserType != "Clinician")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
     }
