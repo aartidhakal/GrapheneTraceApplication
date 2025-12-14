@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<GrapheneTraceApplication.Models.ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,15 +33,56 @@
                     <ul class="navbar-nav">
                         @if (User.Identity?.IsAuthenticated ?? false)
                         {
+                            var currentUser = await UserManager.GetUserAsync(User);
+                            var userType = currentUser?.UserType;
+
                             <li class="nav-item">
-                                <form class="form-inline"
-                                      asp-area="Identity"
+                                <a class="nav-link text-dark"
+                                   asp-controller="Home"
+                                   asp-action="Index">
+                                    Home
+                                </a>
+                            </li>
+
+                            @if (userType == "Patient")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Patient"
+                                       asp-action="Index">
+                                        Patient Dashboard
+                                    </a>
+                                </li>
+                            }
+                            else if (userType == "Clinician")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Clinician"
+                                       asp-action="Index">
+                                        Clinician Dashboard
+                                    </a>
+                                </li>
+                            }
+                            else if (userType == "Admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark"
+                                       asp-controller="Admin"
+                                       asp-action="Index">
+                                        Admin Dashboard
+                                    </a>
+                                </li>
+                            }
+
+                            <li class="nav-item">
+                                <form asp-area="Identity"
                                       asp-page="/Account/Logout"
                                       asp-route-returnUrl="@Url.Action("Index", "Home")"
                                       method="post">
                                     <button type="submit"
                                             class="nav-link btn btn-link text-dark"
-                                            style="padding: 0;">
+                                            style="padding:0">
                                         Logout
                                     </button>
                                 </form>
@@ -55,7 +98,10 @@
                                 </a>
                             </li>
                         }
-                    </ul>
+
+</ul>
+
+
 
                 </div>
 
