@@ -11,7 +11,10 @@ namespace GrapheneTraceApplication.Data
         {
         }
 
-        // Later we will add Patient-related tables:
+        // Patient-related tables
+        public DbSet<PressureReading> PressureReadings { get; set; }
+
+        // Future extensions
         // public DbSet<SensorFrame> SensorFrames { get; set; }
         // public DbSet<PressureAlert> PressureAlerts { get; set; }
         // public DbSet<PatientComment> PatientComments { get; set; }
